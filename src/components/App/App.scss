@@ -1,0 +1,28 @@
+.App {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  padding: 2rem 2rem;
+}
+
+section {
+  padding: 2rem 2rem;
+  height: 100%;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
