@@ -19,3 +19,7 @@ body {
 :root {
   --font-size: calc(10px + 1vmin);
 }
+
+a {
+  color: $color-secondary;
+}

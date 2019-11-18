@@ -45,6 +45,9 @@ class LoginForm extends Component {
     return (
       <form className="LoginForm" onSubmit={this.handleSubmit}>
         <fieldset>
+          <legend align="center">
+            <h2>Login</h2>
+          </legend>
           <div role="alert">{error && <p>{error}</p>}</div>
           <div className="input-group">
             <Label htmlFor="login-username-input">Username</Label>

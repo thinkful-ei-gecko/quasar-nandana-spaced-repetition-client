@@ -42,6 +42,9 @@ class RegistrationForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
+          <legend align="center">
+            <h2>Sign Up</h2>
+          </legend>
           <div role="alert">{error && <p>{error}</p>}</div>
           <div className="input-group">
             <Label htmlFor="registration-name-input">
