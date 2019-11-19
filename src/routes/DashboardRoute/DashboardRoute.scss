@@ -1,0 +1,27 @@
+.word-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.word-info-card {
+  width: 200px;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: no-wrap;
+  margin: 0.5rem 1rem;
+
+  div {
+    border: 1px solid red;
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .word {
+    font-size: 28px;
+    flex-direction: column;
+  }
+}
