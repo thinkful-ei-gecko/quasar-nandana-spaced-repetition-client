@@ -1,27 +1,135 @@
+@import '../../variables.scss';
+
+.dashboard-section {
+  text-align: center;
+}
+.dashboard-header {
+  padding: 1em 2em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  h3 {
+    visibility: hidden;
+    position: relative;
+
+    &:after {
+      visibility: visible;
+      position: absolute;
+      content: 'Letters to practice';
+      left: 0;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+}
 .word-list {
+  margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid red;
 }
 
 .word-info-card {
   width: 200px;
-  border: 1px solid black;
+  width: 40%;
+  position: relative;
+  border: 2px solid black;
+  border-radius: 4px;
   display: flex;
   flex-wrap: no-wrap;
   margin: 0.5rem 1rem;
 
   div {
-    border: 1px solid red;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    // min-width: 0;
+  }
+
+  .incorrect-count {
+    flex: 0 1 auto;
+    // max-width: calc(100% / 3);
+    min-width: 3rem;
+    font-size: 0;
+    visibility: hidden;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: '';
+    color: $color-primary;
+    p {
+      // position: absolute;
+      // display: inline-block;
+      // font-size: 5px;
+      // text-indent: -9999px;
+      // overflow: auto;
+    }
+
+    p:after {
+      font-size: 18px;
+      visibility: visible;
+      content: attr(data-count);
+      display: inline-block;
+      position: absolute;
+      left: 1rem;
+    }
+  }
+
+  .correct-count {
+    flex: 0 1 auto;
+    // max-width: calc(100% / 3);
+    min-width: 3rem;
+    font-size: 0;
+    visibility: hidden;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: '';
+    color: $color-secondary;
+    p {
+      // position: absolute;
+      // display: inline-block;
+      // font-size: 5px;
+      // text-indent: -9999px;
+      // overflow: auto;
+    }
+
+    p:after {
+      font-size: 18px;
+      visibility: visible;
+      content: attr(data-count);
+      display: inline-block;
+      position: absolute;
+      right: 1rem;
+    }
   }
 
   .word {
+    flex-grow: 2;
     font-size: 28px;
     flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .word-info-card {
+    width: 35%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .word-info-card {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .word-info-card {
+    width: 25%;
   }
 }

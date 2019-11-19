@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import LangService from '../../services/lang-service';
 import LangContext from '../../contexts/LangContext';
-import WordInfo from '../../components/WordInfo/WordInfo';
+import {Link} from 'react-router-dom';
+import Button from '../../components/Button/Button';
 import './DashboardRoute.scss';
 
 class DashboardRoute extends Component {
@@ -17,28 +18,43 @@ class DashboardRoute extends Component {
 
   render() {
     let langName = this.context.language.name || '';
-    let totalScore = this.context.language.score || 0;
+    let totalScore = this.context.language.total_score || 0;
     let words = this.context.words || [];
     console.log(words);
     let wordCards = words.map(word => {
       return (
-        <div className="word-info-card">
-          <div className="incorrect-count">
-            <p>{word.incorrect_count}</p>
+        <li className="word-info-card" key={word.id}>
+          <div className="incorrect-count" data-count={word.incorrect_count}>
+            <p data-count={word.incorrect_count}>
+              incorrect answer count: {word.incorrect_count}
+            </p>
+            <p></p>
           </div>
           <div className="word">
             <p>{word.translation}</p>
-            <p>{word.original}</p>
+            <h4>{word.original}</h4>
           </div>
-          <div className="correct-count-score">{word.correct_count}</div>
-        </div>
+          <div className="correct-count">
+            <p data-count={word.correct_count}>
+              correct answer count: {word.correct_count}
+            </p>
+          </div>
+        </li>
       );
     });
 
     return (
-      <section>
+      <section className="dashboard-section">
         <h2>{langName}</h2>
-        <h3>{totalScore}</h3>
+        <Link to="/learn">
+          <Button type="button" className="practice-button">
+            Start practicing
+          </Button>
+        </Link>
+        <div className="dashboard-header">
+          <h3>Words to practice</h3>
+          <h4>Total correct answers: {totalScore}</h4>
+        </div>
         <div className="word-list">{wordCards}</div>
       </section>
     );

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import LangService from '../services/lang-service';
 
 const LangContext = React.createContext({
   language: {},

@@ -16,7 +16,7 @@ main {
 }
 
 section {
-  padding: 2rem 2rem;
+  padding: 0rem 0rem;
   height: 100%;
 }
 
@@ -29,5 +29,23 @@ section {
   p {
     margin: 3rem auto;
     font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  section {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  section {
+    padding: 1rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  section {
+    padding: 2rem 2rem;
   }
 }
