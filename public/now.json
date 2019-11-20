@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "s p a c e d r e p e t i t i o n",
+  "alias": "m-o-r-s-e",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "^/favicon.ico$",
+        "dest": "/favicon.ico"
+      },
+      {
+        "src": "^/manifest.json$",
+        "dest": "/manifest.json"
+       },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

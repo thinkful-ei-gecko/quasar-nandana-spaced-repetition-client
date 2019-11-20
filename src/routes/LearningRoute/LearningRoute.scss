@@ -1,51 +1,75 @@
 @import '../../variables.scss';
 
-.learningRoute-section{
-  text-align:center;
+.learningRoute-section {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  //justify-content: center;
-  // justify-items: center;
-  //align-items:center;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.word{
-  width:20%;
-  margin-left:auto;
-    margin-right:auto;
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid black;
+
+  div {
+    flex: 1 0 auto;
+    font-size: 24px;
+    padding: 0 2rem;
+  }
+  .totalscore {
+    flex-grow: 3;
+    font-size: 36px;
+  }
+}
+
+.word {
+  font-size: 84px;
   //border: 2px solid black;
-  font-size: 32px; 
 }
 
-.guess-form{
-   
+.guess-form {
   display: flex;
   flex-direction: column;
+
+  fieldset {
+    margin: 0 auto;
+  }
+
+  label {
+    visibility: hidden;
+  }
+  input {
+    margin: 0 auto;
+    text-align: center;
+    width: 4rem;
+    border-radius: 4px;
+  }
+  button {
+    display: none;
+  }
 }
 
+.DisplayFeedback {
+  font-size: 24px;
+}
 
 @media only screen and (min-width: 520px) {
   .learningRoute-section {
-    width:50%;
-    margin-left:auto;
-    margin-right:auto;
-     justify-content: center;
-  //justify-items: center;
-  //align-items:center;
+    width: 80%;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .learningRoute-section {
-    width: 50%;
-  }
 }
 
 @media only screen and (min-width: 1600px) {
   .learningRoute-section {
     width: 50%;
-    margin-left:auto;
-    margin-right:auto;
-    justify-content: center;
   }
 }

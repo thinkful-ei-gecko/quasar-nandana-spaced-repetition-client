@@ -1,5 +1,5 @@
 {
-  "name": "spaced-repitition",
+  "name": "spaced-repetition",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "predeploy": "npm run build",
+    "deploy": "now ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
