@@ -36,19 +36,21 @@ class LearningRoute extends Component {
         <h2>Translate the word:</h2>
         <span className='word'>{head.nextWord}</span>
         <form className='guess-form' onSubmit={e => this.handleSubmitGuess(e)}>
-          <label htmlFor='learn-guess-input'>
-            What's the translation for this word?
-          </label>
-          <input
-            type='text'
-            id='learn-guess-input'
-            name='guess'
-            maxLength='1'
-            value={this.context.guess || ''}
-            onChange={e => this.context.setGuess(e.target.value)}
-            required
-          ></input>
-          <button type='submit'>Submit your answer</button>
+          <fieldset>
+            <label htmlFor='learn-guess-input'>
+              What's the translation for this word?
+            </label>
+            <input
+              type='text'
+              id='learn-guess-input'
+              name='guess'
+              maxLength='1'
+              value={this.context.guess || ''}
+              onChange={e => this.context.setGuess(e.target.value)}
+              required
+            ></input>
+            <button type='submit'>Submit your answer</button>
+          </fieldset>
         </form>
         <p>Your total score is: {head.totalScore}</p>
         <p>
