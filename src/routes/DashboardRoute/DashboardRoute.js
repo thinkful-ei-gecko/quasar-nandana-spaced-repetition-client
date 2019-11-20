@@ -13,6 +13,7 @@ class DashboardRoute extends Component {
       this.context.setLanguage(res.language);
       this.context.setWords(res.words);
       console.log(res.language.name);
+      console.log(res)
     });
   }
 

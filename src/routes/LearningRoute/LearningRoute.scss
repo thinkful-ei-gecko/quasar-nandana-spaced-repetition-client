@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+.learningRoute-section{
+  text-align:center;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  // justify-items: center;
+  //align-items:center;
+}
+
+.word{
+  width:20%;
+  margin-left:auto;
+    margin-right:auto;
+  //border: 2px solid black;
+  font-size: 32px; 
+}
+
+.guess-form{
+   
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media only screen and (min-width: 520px) {
+  .learningRoute-section {
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+     justify-content: center;
+  //justify-items: center;
+  //align-items:center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .learningRoute-section {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .learningRoute-section {
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content: center;
+  }
+}
