@@ -6,6 +6,10 @@ import './LearningRoute.scss';
 class LearningRoute extends Component {
   static contextType = LangContext;
 
+  state = {
+    renderForm: true
+  };
+
   componentDidMount() {
     this.handleNextWord();
   }
@@ -14,23 +18,24 @@ class LearningRoute extends Component {
     e.preventDefault();
     LangService.postGuess(this.context.guess).then(res => {
       this.context.setResponse(res);
-      this.context.setRenderWordForm(false);
+      this.setState({ renderForm: false });
     });
   };
 
   handleNextWord = () => {
     LangService.getHead().then(res => {
       this.context.setHead(res);
-      this.context.setRenderWordForm(true);
-      console.log(res);
+      this.setState({ renderForm: true });
     });
   };
 
   renderForm = () => {
     let head = this.context.head || {};
     return (
-      <div>
-        <form className='guess-form' onSubmit={this.handleSubmitGuess}>
+      <>
+        <h2>Translate the word:</h2>
+        <span className='word'>{head.nextWord}</span>
+        <form className='guess-form' onSubmit={e => this.handleSubmitGuess(e)}>
           <label htmlFor='learn-guess-input'>
             What's the translation for this word?
           </label>
@@ -53,21 +58,21 @@ class LearningRoute extends Component {
           You have answered this word incorrectly {head.wordIncorrectCount}{' '}
           times.
         </p>
-      </div>
+      </>
     );
   };
 
   renderResponse = () => {
     let head = this.context.head || {};
     let response = this.context.response || {};
-    console.log('***', this.context.response);
     return (
-      <div>
+      <>
         <h2>
           {response.isCorrect === true
             ? 'You were correct! :D'
             : 'Good try, but not quite right :('}
         </h2>
+        <span className='word'>{response.nextWord}</span>
         <div className='DisplayFeedback'>
           <p>
             The correct translation for {head.nextWord} was {response.answer}{' '}
@@ -75,7 +80,9 @@ class LearningRoute extends Component {
           </p>
         </div>
         <button onClick={this.handleNextWord}>Try another word!</button>
-        <p>Your total score is: {response.totalScore}</p>
+        <div className='DisplayScore'>
+          <p>Your total score is: {response.totalScore}</p>
+        </div>
         <p>
           You have answered this word correctly {response.wordCorrectCount}{' '}
           times.
@@ -84,18 +91,15 @@ class LearningRoute extends Component {
           You have answered this word incorrectly {response.wordIncorrectCount}{' '}
           times.
         </p>
-      </div>
+      </>
     );
   };
 
   render() {
-    let head = this.context.head || {};
-    let isRenderWordForm = this.context.isRenderWordForm || null;
+    let renderForm = this.state.renderForm;
     return (
       <section className='learningRoute-section'>
-        <h2>Translate the word:</h2>
-        <span className='word'>{head.nextWord}</span>
-        {isRenderWordForm ? this.renderForm() : this.renderResponse()}
+        {renderForm ? this.renderForm() : this.renderResponse()}
       </section>
     );
   }

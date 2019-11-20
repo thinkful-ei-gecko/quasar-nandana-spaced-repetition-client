@@ -6,24 +6,12 @@ const LangContext = React.createContext({
   words: [],
   head:{},
   response:{},
-  nextWord:'',
-  wordCorrectCount:0,
-  wordIncorrectCount:0,
-  answer:'',
-  totalScore:0,
-  isRenderWordForm:true,
   guess:'',
   setLanguage: () => {},
   setWords: () => {},
   setHead:() =>{},
   setGuess:() =>{},
   setResponse:()=>{},
-  setNextWord:()=>{},
-  setWordCorrectCount:()=>{},
-  setWordInCorrectCount:()=>{},
-  setTotalScore:()=>{},
-  setCorrectAnswer:()=>{},
-  setRenderWordForm:()=>{}
 });
 
 export default LangContext;
@@ -55,10 +43,6 @@ export class LangProvider extends Component {
     this.setState({guess: guess.toUpperCase()})
   };
 
-  setRenderWordForm = isRenderWordForm =>{
-    this.setState({isRenderWordForm})
-  }
-
   render() {
     const value = {
       language: this.state.language,
@@ -67,14 +51,12 @@ export class LangProvider extends Component {
       head:this.state.head,
       guess:this.state.guess,
       response:this.state.response,
-      isRenderWordForm:this.state.isRenderWordForm,
       
       setLanguage: this.setLanguage,
       setWords: this.setWords,
       setHead:this.setHead,
       setGuess:this.setGuess,
       setResponse:this.setResponse,
-      setRenderWordForm:this.setRenderWordForm
     };
     return (
       <LangContext.Provider value={value}>
