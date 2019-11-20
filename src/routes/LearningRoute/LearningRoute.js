@@ -7,27 +7,18 @@ class LearningRoute extends Component {
   static contextType = LangContext;
 
   componentDidMount() {
-    LangService.getHead().then(res => {
-      this.context.setHead(res);
-      this.context.setRenderWordForm(true);
-      console.log(res);
-    });
+    this.handleNextWord();
   }
 
-  handleSubmit = e => {
+  handleSubmitGuess = e => {
     e.preventDefault();
-    let { guess } = e.target;
-    guess = guess.value;
-    this.context.setGuess(guess);
-
-    // post guess
-    LangService.postGuess(guess).then(res => {
+    LangService.postGuess(this.context.guess).then(res => {
       this.context.setResponse(res);
       this.context.setRenderWordForm(false);
     });
   };
 
-  handleButtonClick = event => {
+  handleNextWord = () => {
     LangService.getHead().then(res => {
       this.context.setHead(res);
       this.context.setRenderWordForm(true);
@@ -39,15 +30,18 @@ class LearningRoute extends Component {
     let head = this.context.head || {};
     return (
       <div>
-        <form className='guess-form' onSubmit={this.handleSubmit}>
+        <form className='guess-form' onSubmit={this.handleSubmitGuess}>
           <label htmlFor='learn-guess-input'>
             What's the translation for this word?
           </label>
           <input
             type='text'
-            required
             id='learn-guess-input'
             name='guess'
+            maxLength='1'
+            value={this.context.guess || ''}
+            onChange={e => this.context.setGuess(e.target.value)}
+            required
           ></input>
           <button type='submit'>Submit your answer</button>
         </form>
@@ -80,7 +74,7 @@ class LearningRoute extends Component {
             and you chose {this.context.guess} !
           </p>
         </div>
-        <button onClick={this.handleButtonClick}>Try another word!</button>
+        <button onClick={this.handleNextWord}>Try another word!</button>
         <p>Your total score is: {response.totalScore}</p>
         <p>
           You have answered this word correctly {response.wordCorrectCount}{' '}
@@ -97,7 +91,6 @@ class LearningRoute extends Component {
   render() {
     let head = this.context.head || {};
     let isRenderWordForm = this.context.isRenderWordForm || null;
-    let response = this.context.response || {};
     return (
       <section className='learningRoute-section'>
         <h2>Translate the word:</h2>

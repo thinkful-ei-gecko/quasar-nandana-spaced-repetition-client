@@ -52,7 +52,7 @@ export class LangProvider extends Component {
   };
 
   setGuess = guess => {
-    this.setState({guess})
+    this.setState({guess: guess.toUpperCase()})
   };
 
   setRenderWordForm = isRenderWordForm =>{
