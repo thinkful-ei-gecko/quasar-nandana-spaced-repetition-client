@@ -83,13 +83,20 @@ class LearningRoute extends Component {
               type='text'
               id='learn-guess-input'
               name='guess'
-              maxLength={language.name == null ? 100 : language.name === 'Morse Code' ? 1 : 100}
+              maxLength={
+                language.name == null
+                  ? 100
+                  : language.name === 'Morse Code'
+                  ? 1
+                  : 100
+              }
               autoFocus
               value={this.context.guess || ''}
               onChange={e =>
                 this.context.setGuess(
-                  language.name == null ? '' :
-                  language.name === 'Morse Code'
+                  language.name == null
+                    ? e.target.value
+                    : language.name === 'Morse Code'
                     ? e.target.value.toUpperCase()
                     : e.target.value
                 )
@@ -115,18 +122,47 @@ class LearningRoute extends Component {
             ? 'You were correct! :D'
             : 'Good try, but not quite right :('}
         </h2>
-        <div className='DisplayScore' className='hide-offset'>
+        <div className='DisplayScore hide-offset'>
           <p>Your total score is: {response.totalScore}</p>
         </div>
-        <h3 className='totalscore'>{response.totalScore}</h3>
-        <div className='DisplayFeedback'>
+        <div className='scoreboard'>
+          <div className='incorrect-count'>
+            <h4>
+              {response.isCorrect
+                ? head.wordIncorrectCount
+                : head.wordIncorrectCount + 1}
+            </h4>
+          </div>
+          <div className='totalscore'>
+            <h3>{response.totalScore}</h3>
+          </div>
+          <div className='correct-count'>
+            <h4>
+              {response.isCorrect
+                ? head.wordCorrectCount + 1
+                : head.wordCorrectCount}
+            </h4>
+          </div>
+        </div>
+        <div className='word-answer'>
+          <span className='word-translation'>{response.answer}</span>
           <span className='word'>{head.nextWord}</span>
+        </div>
+        <div className='DisplayFeedback'>
           <p className='hide-offset'>
             The correct translation for {head.nextWord} was {response.answer}{' '}
             and you chose {this.context.guess}!
           </p>
         </div>
-        <Button autoFocus onClick={this.handleNextWord}>
+        <Button
+          autoFocus
+          onClick={this.handleNextWord}
+          className={
+            response.isCorrect
+              ? 'correct-button next-button'
+              : 'wrong-button next-button'
+          }
+        >
           Try another word!
         </Button>
         {/*     <p>
