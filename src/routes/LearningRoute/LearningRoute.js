@@ -8,11 +8,6 @@ import './LearningRoute.scss';
 class LearningRoute extends Component {
   static contextType = LangContext;
 
-/*   constructor(props) {
-    super(props);
-    this.textInput = React.createRef();
-  } */
-
   state = {
     renderForm: true
   };
@@ -21,7 +16,7 @@ class LearningRoute extends Component {
     this.handleNextWord();
   }
 
-  handleSubmitGuess = (e) => {
+  handleSubmitGuess = e => {
     e.preventDefault();
     LangService.postGuess(this.context.guess).then(res => {
       this.context.setResponse(res);
@@ -29,7 +24,7 @@ class LearningRoute extends Component {
     });
   };
 
-/*   handleAlternateSubmitGuess = (e) => {
+  /*   handleAlternateSubmitGuess = (e) => {
     this.context.setGuess(e.target.value);
     this.handleSubmitGuess();
   } */
@@ -44,20 +39,31 @@ class LearningRoute extends Component {
 
   renderForm = () => {
     let head = this.context.head || {};
+    let language = this.context.language || {};
     return (
       <>
+        <h2 className='hide-offset'>Translate the word:</h2>
         <div className='scoreboard'>
-          <div className='correct-count'>
-            <h4>{head.wordCorrectCount}</h4>
+          <div className='incorrect-count'>
+            <h4>{head.wordIncorrectCount}</h4>
           </div>
           <div className='totalscore'>
             <h3>{head.totalScore}</h3>
           </div>
-          <div className='incorrect-count'>
-            <h4>{head.wordIncorrectCount}</h4>
+          <div className='correct-count'>
+            <h4>{head.wordCorrectCount}</h4>
           </div>
         </div>
         <span className='word'>{head.nextWord}</span>
+        <p className='hide-offset'>Your total score is: {head.totalScore}</p>
+        <p className='hide-offset'>
+          You have answered this word correctly {head.wordCorrectCount} times.
+          {head.totalScore}
+        </p>
+        <p className='hide-offset'>
+          You have answered this word incorrectly {head.wordIncorrectCount}{' '}
+          times.
+        </p>
         <form className='guess-form' onSubmit={e => this.handleSubmitGuess(e)}>
           <fieldset>
             <Label htmlFor='learn-guess-input'>
@@ -67,13 +73,13 @@ class LearningRoute extends Component {
               type='text'
               id='learn-guess-input'
               name='guess'
-              maxLength='1'
+              maxLength={language.name === 'Morse Code' ? 1 : 100}
               autoFocus
               value={this.context.guess || ''}
               onChange={e => this.context.setGuess(e.target.value)}
               required
             />
-            <Button type='submit'>Submit your answer</Button>
+            <Button type='submit' className='hide-offset-partial'>Submit your answer</Button>
           </fieldset>
         </form>
       </>
@@ -91,17 +97,19 @@ class LearningRoute extends Component {
             : 'Good try, but not quite right :('}
         </h2>
         <div className='DisplayFeedback'>
-        <span className='word'>{head.nextWord}</span>
+          <span className='word'>{head.nextWord}</span>
           <p>
             The correct translation for {head.nextWord} was {response.answer}{' '}
-            and you chose {this.context.guess} !
+            and you chose {this.context.guess}!
           </p>
         </div>
-        <Button autoFocus onClick={this.handleNextWord}>Try another word!</Button>
+        <Button autoFocus onClick={this.handleNextWord}>
+          Try another word!
+        </Button>
         <div className='DisplayScore'>
           <p>Your total score is: {response.totalScore}</p>
         </div>
-    {/*     <p>
+        {/*     <p>
           You have answered this word correctly {response.wordCorrectCount}{' '}
           times.
         </p>
@@ -115,7 +123,7 @@ class LearningRoute extends Component {
 
   render() {
     let renderForm = this.state.renderForm;
-    
+
     return (
       <section className='learningRoute-section'>
         {renderForm ? this.renderForm() : this.renderResponse()}

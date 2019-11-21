@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Fira+Code|Raleway|Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono|Space+Mono&display=swap');
 @import './variables.scss';
 
 html {
@@ -10,11 +9,12 @@ html {
 body {
   height: 100%;
   width: 100%;
-  font-family: 'Fira Code', sans-serif;
+  font-family: 'Fira Mono', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  font-color: $color-font-normal;
+  color: $color-font-normal;
+  background-color: $color-background;
 }
 
 :root {

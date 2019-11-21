@@ -1,26 +1,26 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {Input, Required, Label} from '../Form/Form';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import './RegistrationForm.scss';
 
 class RegistrationForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {},
+    onRegistrationSuccess: () => {}
   };
 
-  state = {error: null};
+  state = { error: null };
 
   firstInput = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const {name, username, password} = ev.target;
+    const { name, username, password } = ev.target;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
-      password: password.value,
+      password: password.value
     })
       .then(user => {
         name.value = '';
@@ -29,7 +29,7 @@ class RegistrationForm extends Component {
         this.props.onRegistrationSuccess();
       })
       .catch(res => {
-        this.setState({error: res.error});
+        this.setState({ error: res.error });
       });
   };
 
@@ -38,48 +38,50 @@ class RegistrationForm extends Component {
   }
 
   render() {
-    const {error} = this.state;
+    const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend align="center">
+          <legend align='center'>
             <h2>Sign up</h2>
           </legend>
-          <div role="alert">{error && <p>{error}</p>}</div>
-          <div className="input-group">
-            <Label htmlFor="registration-name-input">
+          <div role='alert' className='alert'>
+            {error && <p>{error}</p>}
+          </div>
+          <div className='input-group'>
+            <Label htmlFor='registration-name-input'>
               Enter your name
               <Required />
             </Label>
             <Input
               ref={this.firstInput}
-              id="registration-name-input"
-              name="name"
+              id='registration-name-input'
+              name='name'
               required
             />
           </div>
-          <div className="input-group">
-            <Label htmlFor="registration-username-input">
+          <div className='input-group'>
+            <Label htmlFor='registration-username-input'>
               Choose a username
               <Required />
             </Label>
-            <Input id="registration-username-input" name="username" required />
+            <Input id='registration-username-input' name='username' required />
           </div>
-          <div className="input-group">
-            <Label htmlFor="registration-password-input">
+          <div className='input-group'>
+            <Label htmlFor='registration-password-input'>
               Choose a password
               <Required />
             </Label>
             <Input
-              id="registration-password-input"
-              name="password"
-              type="password"
+              id='registration-password-input'
+              name='password'
+              type='password'
               required
             />
           </div>
           <footer>
-            <Button type="submit">Sign up</Button>{' '}
-            <Link to="/login">Already have an account?</Link>
+            <Button type='submit'>Sign up</Button>{' '}
+            <Link to='/login'>Already have an account?</Link>
           </footer>
         </fieldset>
       </form>

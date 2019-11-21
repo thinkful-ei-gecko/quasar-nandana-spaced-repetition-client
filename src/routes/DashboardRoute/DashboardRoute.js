@@ -29,7 +29,6 @@ class DashboardRoute extends Component {
             <p data-count={word.incorrect_count}>
               incorrect answer count: {word.incorrect_count}
             </p>
-            <p></p>
           </div>
           <div className='word'>
             <p>{word.translation}</p>

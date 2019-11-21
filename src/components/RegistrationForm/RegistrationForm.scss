@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 form {
   // margin: 2rem 1rem;
   // height: 100%;
@@ -43,6 +45,13 @@ fieldset {
   }
 }
 
+.alert p {
+  font-size: 14px;
+  text-align: center;
+  line-height: 2.5em;
+  color: $color-primary;
+}
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -55,7 +64,7 @@ fieldset {
 
   input {
     padding: 0.25em 0.5em;
-    border-radius: 4px;
     width: 100%;
   }
 }
+

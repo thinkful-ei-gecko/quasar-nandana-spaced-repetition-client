@@ -1,29 +1,29 @@
-import React, {Component} from 'react';
-import {Input, Label} from '../Form/Form';
+import React, { Component } from 'react';
+import { Input, Label } from '../Form/Form';
 import AuthApiService from '../../services/auth-api-service';
 import UserContext from '../../contexts/UserContext';
 import Button from '../Button/Button';
 
 class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {},
+    onLoginSuccess: () => {}
   };
 
   static contextType = UserContext;
 
-  state = {error: null};
+  state = { error: null };
 
   firstInput = React.createRef();
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const {username, password} = ev.target;
+    const { username, password } = ev.target;
 
-    this.setState({error: null});
+    this.setState({ error: null });
 
     AuthApiService.postLogin({
       username: username.value,
-      password: password.value,
+      password: password.value
     })
       .then(res => {
         username.value = '';
@@ -32,7 +32,7 @@ class LoginForm extends Component {
         this.props.onLoginSuccess();
       })
       .catch(res => {
-        this.setState({error: res.error});
+        this.setState({ error: res.error });
       });
   };
 
@@ -41,33 +41,35 @@ class LoginForm extends Component {
   }
 
   render() {
-    const {error} = this.state;
+    const { error } = this.state;
     return (
-      <form className="LoginForm" onSubmit={this.handleSubmit}>
+      <form className='LoginForm' onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend align="center">
+          <legend align='center'>
             <h2>Login</h2>
           </legend>
-          <div role="alert">{error && <p>{error}</p>}</div>
-          <div className="input-group">
-            <Label htmlFor="login-username-input">Username</Label>
+          <div role='alert' className='alert'>
+            {error && <p>{error}</p>}
+          </div>
+          <div className='input-group'>
+            <Label htmlFor='login-username-input'>Username</Label>
             <Input
               ref={this.firstInput}
-              id="login-username-input"
-              name="username"
+              id='login-username-input'
+              name='username'
               required
             />
           </div>
-          <div className="input-group">
-            <Label htmlFor="login-password-input">Password</Label>
+          <div className='input-group'>
+            <Label htmlFor='login-password-input'>Password</Label>
             <Input
-              id="login-password-input"
-              name="password"
-              type="password"
+              id='login-password-input'
+              name='password'
+              type='password'
               required
             />
           </div>
-          <Button type="submit">Login</Button>
+          <Button type='submit'>Login</Button>
         </fieldset>
       </form>
     );

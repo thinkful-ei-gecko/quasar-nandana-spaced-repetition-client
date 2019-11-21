@@ -10,6 +10,25 @@
   align-items: center;
 }
 
+.hide-offset {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide-offset-partial {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  padding: 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: break-word;
+  text-overflow: '';
+  top:0;
+  border: none;
+  left:0;
+}
+
 .scoreboard {
   display: flex;
   flex-direction: row;
@@ -29,7 +48,7 @@
 }
 
 .word {
-  font-size: 84px;
+  font-size: 64px;
   //border: 2px solid black;
 }
 
@@ -48,10 +67,6 @@
     margin: 0 auto;
     text-align: center;
     width: 4rem;
-    border-radius: 4px;
-  }
-  button {
-    display: none;
   }
 }
 
