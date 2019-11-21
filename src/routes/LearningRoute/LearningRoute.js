@@ -44,8 +44,7 @@ class LearningRoute extends Component {
     let head = this.context.head || {};
     let response = this.context.response || {};
     let language = this.context.language || {};
-    if (language.name == null) return null;
-    console.log(language.name);
+    // if (language.name == null) return null;
 
     return (
       <>
@@ -84,11 +83,12 @@ class LearningRoute extends Component {
               type='text'
               id='learn-guess-input'
               name='guess'
-              maxLength={language.name === 'Morse Code' ? 1 : 100}
+              maxLength={language.name == null ? 100 : language.name === 'Morse Code' ? 1 : 100}
               autoFocus
               value={this.context.guess || ''}
               onChange={e =>
                 this.context.setGuess(
+                  language.name == null ? '' :
                   language.name === 'Morse Code'
                     ? e.target.value.toUpperCase()
                     : e.target.value
