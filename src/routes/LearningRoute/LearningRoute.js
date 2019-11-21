@@ -39,6 +39,7 @@ class LearningRoute extends Component {
 
   renderForm = () => {
     let head = this.context.head || {};
+    let response = this.context.response || {};
     let language = this.context.language || {};
     return (
       <>
@@ -54,15 +55,13 @@ class LearningRoute extends Component {
             <h4>{head.wordCorrectCount}</h4>
           </div>
         </div>
-        <span className='word'>{head.nextWord}</span>
-        <p className='hide-offset'>Your total score is: {head.totalScore}</p>
+        <span className='word'>{!response.nextWord ? head.nextWord : response.nextWord}</span>
+        <p className='hide-offset'>Your total score is: {!response.totalScore ? head.totalScore : response.totalScore}</p>
         <p className='hide-offset'>
           You have answered this word correctly {head.wordCorrectCount} times.
-          {head.totalScore}
         </p>
         <p className='hide-offset'>
-          You have answered this word incorrectly {head.wordIncorrectCount}{' '}
-          times.
+          You have answered this word incorrectly {head.wordIncorrectCount} times.
         </p>
         <form className='guess-form' onSubmit={e => this.handleSubmitGuess(e)}>
           <fieldset>
