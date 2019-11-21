@@ -55,6 +55,14 @@
 
   &:hover {
     cursor: pointer;
+    color: $color-background;
+    background-color: $color-tertiary;
+    border: 2px solid $color-font-normal
+  }
+  &:focus {
+    color: $color-background;
+    background-color: $color-tertiary;
+    border: 2px solid $color-font-normal
   }
 }
 

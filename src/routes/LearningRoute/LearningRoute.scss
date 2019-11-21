@@ -106,9 +106,36 @@
 .correct-button {
   color: $color-secondary;
   background-color: $color-secondary;
+
+  &:hover {
+    color: $color-background;
+    background-color: $color-background;
+  }
+  &:focus {
+    color: $color-background;
+    background-color: $color-background;
+  }
+  &:active {
+    color: $color-secondary;
+    background-color: $color-secondary;
+  }
+
+  &:hover::after {
+    color: $color-secondary;
+    background-color: $color-background;
+  }
+
+  &:focus::after {
+    color: $color-secondary;
+    background-color: $color-background;
+  }
+  &:active::after {
+    color: $color-background;
+    background-color: $color-secondary;
+  }
 }
 
-.correct-button:after {
+.correct-button::after {
   font-size: 24px;
   content: 'Correct!';
   color: $color-background;
@@ -123,8 +150,21 @@
   color: $color-primary;
   background-color: $color-primary;
   border: 2px solid $color-primary;
+  &:hover {
+    color: $color-background;
+    background-color: $color-background;
+  }
+  &:active {
+    color: $color-background;
+    background-color: $color-background;
+  }
+
+  &:hover::after {
+    color: $color-primary;
+    background-color: $color-background;
+  }
 }
-.wrong-button:after {
+.wrong-button::after {
   font-size: 24px;
   content: 'Wrong!';
   color: $color-background;

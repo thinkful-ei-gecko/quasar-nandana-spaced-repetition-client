@@ -10,5 +10,15 @@ button {
 
   &:hover {
     cursor: pointer;
+    border: 2px solid $color-font-normal;
+    background-color: $color-tertiary;
+    color: $color-background;
+    
+  }
+
+  &:focus {
+    border: 2px solid $color-font-normal;
+    background-color: $color-tertiary;
+    color: $color-background;
   }
 }
