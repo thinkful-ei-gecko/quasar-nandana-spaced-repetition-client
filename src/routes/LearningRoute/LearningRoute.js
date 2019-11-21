@@ -115,12 +115,13 @@ class LearningRoute extends Component {
             ? 'You were correct! :D'
             : 'Good try, but not quite right :('}
         </h2>
-        <div className='DisplayScore'>
+        <div className='DisplayScore' className='hide-offset'>
           <p>Your total score is: {response.totalScore}</p>
         </div>
+        <h3 className='totalscore'>{response.totalScore}</h3>
         <div className='DisplayFeedback'>
           <span className='word'>{head.nextWord}</span>
-          <p>
+          <p className='hide-offset'>
             The correct translation for {head.nextWord} was {response.answer}{' '}
             and you chose {this.context.guess}!
           </p>
