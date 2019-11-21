@@ -14,6 +14,9 @@ class LearningRoute extends Component {
 
   componentDidMount() {
     this.handleNextWord();
+    LangService.getLang().then(res => {
+      this.context.setLanguage(res.language);
+    });
   }
 
   handleSubmitGuess = e => {
@@ -41,6 +44,9 @@ class LearningRoute extends Component {
     let head = this.context.head || {};
     let response = this.context.response || {};
     let language = this.context.language || {};
+    if (language.name == null) return null;
+    console.log(language.name);
+
     return (
       <>
         <h2 className='hide-offset'>Translate the word:</h2>
@@ -55,13 +61,19 @@ class LearningRoute extends Component {
             <h4>{head.wordCorrectCount}</h4>
           </div>
         </div>
-        <span className='word'>{!response.nextWord ? head.nextWord : response.nextWord}</span>
-        <p className='hide-offset'>Your total score is: {!response.totalScore ? head.totalScore : response.totalScore}</p>
+        <span className='word'>
+          {!response.nextWord ? head.nextWord : response.nextWord}
+        </span>
+        <p className='hide-offset'>
+          Your total score is:{' '}
+          {!response.totalScore ? head.totalScore : response.totalScore}
+        </p>
         <p className='hide-offset'>
           You have answered this word correctly {head.wordCorrectCount} times.
         </p>
         <p className='hide-offset'>
-          You have answered this word incorrectly {head.wordIncorrectCount} times.
+          You have answered this word incorrectly {head.wordIncorrectCount}{' '}
+          times.
         </p>
         <form className='guess-form' onSubmit={e => this.handleSubmitGuess(e)}>
           <fieldset>
@@ -75,10 +87,18 @@ class LearningRoute extends Component {
               maxLength={language.name === 'Morse Code' ? 1 : 100}
               autoFocus
               value={this.context.guess || ''}
-              onChange={e => this.context.setGuess(e.target.value)}
+              onChange={e =>
+                this.context.setGuess(
+                  language.name === 'Morse Code'
+                    ? e.target.value.toUpperCase()
+                    : e.target.value
+                )
+              }
               required
             />
-            <Button type='submit' className='hide-offset-partial'>Submit your answer</Button>
+            <Button type='submit' className='hide-offset-partial'>
+              Submit your answer
+            </Button>
           </fieldset>
         </form>
       </>
@@ -90,11 +110,14 @@ class LearningRoute extends Component {
     let response = this.context.response || {};
     return (
       <>
-        <h2>
+        <h2 className='hide-offset'>
           {response.isCorrect === true
             ? 'You were correct! :D'
             : 'Good try, but not quite right :('}
         </h2>
+        <div className='DisplayScore'>
+          <p>Your total score is: {response.totalScore}</p>
+        </div>
         <div className='DisplayFeedback'>
           <span className='word'>{head.nextWord}</span>
           <p>
@@ -105,9 +128,6 @@ class LearningRoute extends Component {
         <Button autoFocus onClick={this.handleNextWord}>
           Try another word!
         </Button>
-        <div className='DisplayScore'>
-          <p>Your total score is: {response.totalScore}</p>
-        </div>
         {/*     <p>
           You have answered this word correctly {response.wordCorrectCount}{' '}
           times.

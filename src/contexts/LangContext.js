@@ -40,7 +40,7 @@ export class LangProvider extends Component {
   };
 
   setGuess = guess => {
-    guess = this.state.language.name === 'Morse Code' ? guess.toUpperCase() : guess;
+    // guess = this.state.head.language.name === 'Morse Code' ? guess.toUpperCase() : guess;
     this.setState({ guess });
   };
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import LangService from '../../services/lang-service';
 import LangContext from '../../contexts/LangContext';
 import { Link } from 'react-router-dom';
-import Button from '../../components/Button/Button';
 import './DashboardRoute.scss';
 
 class DashboardRoute extends Component {
