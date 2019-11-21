@@ -4,6 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 
   div {
     display: flex;
@@ -13,17 +14,32 @@ header {
 
 nav {
   font-size: 22px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  a {
+    margin-left: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
 }
 
 @media only screen and (min-width: 520px) {
   header {
     padding: 0.5em 1em;
+
   }
 }
 
 @media only screen and (min-width: 768px) {
   header {
     padding: 0.5em 2em;
+    justify-content: space-around;
+    flex-direction: row;
   }
 }
 

@@ -12,7 +12,7 @@ main {
   position: relative;
   flex-grow: 1;
   width: 100%;
-  padding: 2rem 2rem;
+  padding: 0.4rem 0.4rem;
 }
 
 section {
@@ -23,24 +23,38 @@ section {
 .login-registration-section {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  position: relative;
 
   p {
+    position: relative;
     margin: 3rem auto;
     font-size: 20px;
+    // display: inline-block;
+    // flex-grow: 1;
   }
+
+  /* form {
+    flex-grow: 1;
+  } */
 }
 
 @media only screen and (min-width: 520px) {
   section {
     padding: 0.5rem 0.5rem;
   }
+  main{
+    padding: 1rem 1rem;
+  }
 }
 
 @media only screen and (min-width: 768px) {
   section {
     padding: 1rem 1rem;
+  }
+  main{
+    padding: 2rem 2rem;
   }
 }
 

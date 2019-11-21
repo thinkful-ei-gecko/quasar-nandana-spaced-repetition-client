@@ -7,6 +7,12 @@ form {
   display: flex;
 }
 
+.LoginForm {
+  button {
+    margin: 0 auto;
+  }
+}
+
 fieldset {
   border: none;
   padding: 0;
@@ -17,6 +23,7 @@ fieldset {
   justify-content: center;
   align-items: center;
   justify-items: center;
+  margin: 0 auto;
 
   legend {
     text-align: center;

@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import LangService from '../../services/lang-service';
 import LangContext from '../../contexts/LangContext';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './DashboardRoute.scss';
 
@@ -13,7 +13,7 @@ class DashboardRoute extends Component {
       this.context.setLanguage(res.language);
       this.context.setWords(res.words);
       console.log(res.language.name);
-      console.log(res)
+      console.log(res);
     });
   }
 
@@ -24,18 +24,18 @@ class DashboardRoute extends Component {
     console.log(words);
     let wordCards = words.map(word => {
       return (
-        <li className="word-info-card" key={word.id}>
-          <div className="incorrect-count" data-count={word.incorrect_count}>
+        <li className='word-info-card' key={word.id}>
+          <div className='incorrect-count' data-count={word.incorrect_count}>
             <p data-count={word.incorrect_count}>
               incorrect answer count: {word.incorrect_count}
             </p>
             <p></p>
           </div>
-          <div className="word">
+          <div className='word'>
             <p>{word.translation}</p>
             <h4>{word.original}</h4>
           </div>
-          <div className="correct-count">
+          <div className='correct-count'>
             <p data-count={word.correct_count}>
               correct answer count: {word.correct_count}
             </p>
@@ -45,18 +45,16 @@ class DashboardRoute extends Component {
     });
 
     return (
-      <section className="dashboard-section">
+      <section className='dashboard-section'>
         <h2>{langName}</h2>
-        <Link to="/learn">
-          <Button type="button" className="practice-button">
-            Start practicing
-          </Button>
+        <Link to='/learn' className='practice-link'>
+          Start practicing
         </Link>
-        <div className="dashboard-header">
+        <div className='dashboard-header'>
           <h3>Words to practice</h3>
           <h4>Total correct answers: {totalScore}</h4>
         </div>
-        <div className="word-list">{wordCards}</div>
+        <div className='word-list'>{wordCards}</div>
       </section>
     );
   }
