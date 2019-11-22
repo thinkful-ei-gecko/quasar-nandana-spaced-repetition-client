@@ -13,9 +13,9 @@ class Header extends Component {
 
   renderLogoutLink() {
     return (
-      <div>
+      <div className='header-profile'>
         <span>{this.context.user.name}</span>
-        <nav>
+        <nav className='nav__loggedin'>
           <Link onClick={this.handleLogoutClick} to="/login">
             Logout
           </Link>
@@ -27,9 +27,9 @@ class Header extends Component {
   renderLoginLink() {
     return (
       // prettier-ignore
-      <nav>
+      <nav className='nav__loggedout'>
         <Link to="/login">Login</Link>
-        {' '}
+
         <Link to="/register">Sign up</Link>
       </nav>
     );
