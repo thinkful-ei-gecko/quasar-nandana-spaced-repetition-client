@@ -11,8 +11,6 @@ class DashboardRoute extends Component {
     LangService.getLang().then(res => {
       this.context.setLanguage(res.language);
       this.context.setWords(res.words);
-      console.log(res.language.name);
-      console.log(res);
     });
   }
 
@@ -20,7 +18,6 @@ class DashboardRoute extends Component {
     let langName = this.context.language.name || '';
     let totalScore = this.context.language.total_score || 0;
     let words = this.context.words || [];
-    console.log(words);
     let wordCards = words.map(word => {
       return (
         <li className='word-info-card' key={word.id}>

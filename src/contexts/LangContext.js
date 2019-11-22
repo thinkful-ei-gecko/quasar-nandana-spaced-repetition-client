@@ -24,7 +24,7 @@ export class LangProvider extends Component {
   }
 
   setLanguage = language => {
-    this.setState({ language }, console.log(this.state.language));
+    this.setState({ language });
   };
 
   setWords = words => {
