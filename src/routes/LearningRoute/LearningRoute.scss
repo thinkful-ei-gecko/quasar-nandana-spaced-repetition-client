@@ -51,7 +51,7 @@
   color: $color-primary;
 }
 .correct-count {
-  color: $color-secondary;
+  color: $color-quaternary;
 }
 
 .totalscore {
@@ -113,8 +113,8 @@
 }
 
 .correct-button {
-  color: $color-secondary;
-  background-color: $color-secondary;
+  color: $color-quaternary;
+  background-color: $color-quaternary;
 
   &:hover {
     color: $color-background;
@@ -125,22 +125,22 @@
     background-color: $color-background;
   }
   &:active {
-    color: $color-secondary;
-    background-color: $color-secondary;
+    color: $color-quaternary;
+    background-color: $color-quaternary;
   }
 
   &:hover::after {
-    color: $color-secondary;
+    color: $color-quaternary;
     background-color: $color-background;
   }
 
   &:focus::after {
-    color: $color-secondary;
+    color: $color-quaternary;
     background-color: $color-background;
   }
   &:active::after {
     color: $color-background;
-    background-color: $color-secondary;
+    background-color: $color-quaternary;
   }
 }
 
@@ -148,7 +148,7 @@
   font-size: 24px;
   content: 'Correct!';
   color: $color-background;
-  background-color: $color-secondary;
+  background-color: $color-quaternary;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -168,8 +168,8 @@
     background-color: $color-background;
   }
   &:active {
-    color: $color-background;
-    background-color: $color-background;
+    color: $color-primary;
+    background-color: $color-primary;
   }
 
   &:hover::after {
