@@ -13,6 +13,6 @@ Demo password: pass
 This uses spaced repetition to help people learn Morse Code. The app will display the alphabet in Morse code, and ask you to recall the alphabetic representation for each encoded letter.
 
 ## Tech
-This is a full-stack web-app. 
-Front-end: React.js, SCSS
-Back-end: Node.js, Express.js, knex, PostGreSQL, RESTful API
+This is a full-stack web-app.  
+Front-end: React.js, SCSS  
+Back-end: Node.js, Express.js, knex, PostGreSQL, RESTful API  
