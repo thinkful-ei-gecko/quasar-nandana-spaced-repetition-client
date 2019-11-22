@@ -37,8 +37,8 @@ class Header extends Component {
 
   render() {
     return (
-      <header>
-        <h1>
+      <header className={TokenService.hasAuthToken() ? '' : 'header__loggedout'}>
+        <h1 className={TokenService.hasAuthToken() ? '' : 'sitetitle__loggedout'}>
           <Link to="/">Spaced repetition</Link>
         </h1>
         {TokenService.hasAuthToken()
