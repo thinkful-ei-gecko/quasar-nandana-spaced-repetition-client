@@ -144,12 +144,11 @@ class LearningRoute extends Component {
             </h4>
           </div>
         </div>
-        <div className='word-answer'>
-          <span className='word-translation'>{response.answer}</span>
-          <span className='word'>{head.nextWord}</span>
-        </div>
-        <div className='DisplayFeedback'>
-          <p className='hide-offset'>
+        <span className='word word-response' data-decoded={response.answer}>
+          {head.nextWord}
+        </span>
+        <div className='DisplayFeedback hide-offset'>
+          <p>
             The correct translation for {head.nextWord} was {response.answer}{' '}
             and you chose {this.context.guess}!
           </p>
@@ -165,14 +164,6 @@ class LearningRoute extends Component {
         >
           Try another word!
         </Button>
-        {/*     <p>
-          You have answered this word correctly {response.wordCorrectCount}{' '}
-          times.
-        </p>
-        <p>
-          You have answered this word incorrectly {response.wordIncorrectCount}{' '}
-          times.
-        </p> */}
       </>
     );
   };

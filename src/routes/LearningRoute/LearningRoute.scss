@@ -60,6 +60,7 @@
 
 .word {
   font-size: 64px;
+  position: relative;
   //border: 2px solid black;
 }
 
@@ -81,7 +82,7 @@
   }
 }
 
-.word-answer {
+/* .word-answer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,6 +92,14 @@
 
 .word-translation {
   font-size: 48px;
+} */
+
+.word-response::after {
+  content: attr(data-decoded);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -50%;
 }
 
 .DisplayFeedback {
@@ -154,6 +163,10 @@
     color: $color-background;
     background-color: $color-background;
   }
+  &:focus {
+    color: $color-background;
+    background-color: $color-background;
+  }
   &:active {
     color: $color-background;
     background-color: $color-background;
@@ -162,6 +175,14 @@
   &:hover::after {
     color: $color-primary;
     background-color: $color-background;
+  }
+  &:focus::after {
+    color: $color-primary;
+    background-color: $color-background;
+  }
+  &:active::after {
+    color: $color-background;
+    background-color: $color-primary;
   }
 }
 .wrong-button::after {

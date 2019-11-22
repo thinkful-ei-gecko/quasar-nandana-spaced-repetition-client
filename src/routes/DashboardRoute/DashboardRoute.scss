@@ -18,7 +18,7 @@
     margin-bottom: 2rem;
     line-height: 2rem;
 
-    &:after {
+    &::after {
       visibility: visible;
       position: absolute;
       content: 'Letters to practice';
@@ -115,7 +115,7 @@
       // overflow: auto;
     }
 
-    p:after {
+    p::after {
       font-size: 18px;
       visibility: visible;
       content: attr(data-count);
@@ -145,7 +145,7 @@
       // overflow: auto;
     }
 
-    p:after {
+    p::after {
       font-size: 18px;
       visibility: visible;
       content: attr(data-count);
@@ -180,7 +180,7 @@
     width: 20%;
   }
 
-  .dashboard-header > h3:after {
+  .dashboard-header > h3::after {
     text-align: left;
   }
 }
